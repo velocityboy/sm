@@ -37,10 +37,11 @@ export default class SourceMap {
 
   constructor(path: string) {
     this._path = path;
+    this._data = this._getSourceMappingData();
+    this._resolveSources();
   }
 
   dump(): void {
-    this._data = this._getSourceMappingData();
     console.log(this._data);
     this._extractMappings();
     console.log(this._mapping);
@@ -64,6 +65,17 @@ export default class SourceMap {
       });
 
       this._mapping = new Map(data);
+  }
+
+  _resolveSources() {
+    const root = this._data.sourceRoot;
+    if (root != null) {
+      this._data.sources = this._data.sources
+        .map(source => path.join(root, source));
+    }
+
+    this._data.sources = this._data.sources
+      .map(source => path.resolve(source));
   }
 
   _mappingFromBase64(lineNumber: number, base64: string): Segment {
