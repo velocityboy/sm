@@ -1,0 +1,32 @@
+{
+  "name": "smapdump",
+  "version": "1.0.0",
+  "description": "Dump utility for source maps",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src/ -d out/ --source-maps inline",
+    "build-maps": "babel src/ -d out/ -s out/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velocityboy/smapdump.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/velocityboy/smapdump/issues"
+  },
+  "homepage": "https://github.com/velocityboy/smapdump#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-env": "^2.4.1",
+    "babel-plugin-transform-es2015-computed-properties": "^6.24.1",
+    "babel-polyfill": "^6.26.0"
+  },
+  "dependencies": {
+    "base64-js": "^1.2.1",
+    "text-encoding": "^0.6.4",
+    "yargs": "^10.0.3"
+  }
+}
